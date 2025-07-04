@@ -432,4 +432,48 @@ export class FeedbackService {
 
     return await feedback.save();
   }
+
+  /**
+   * List all feedback (paginated)
+   */
+  async listFeedback({ skip = 0, limit = 20 }: { skip?: number; limit?: number } = {}): Promise<FeedbackDocument[]> {
+    if (!this.isConnected) {
+      await this.initialize();
+    }
+    return FeedbackModel.find({})
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+  }
+
+  /**
+   * Get feedback by ID
+   */
+  async getFeedbackById(id: string): Promise<FeedbackDocument | null> {
+    if (!this.isConnected) {
+      await this.initialize();
+    }
+    return FeedbackModel.findById(id);
+  }
+
+  /**
+   * Update feedback by ID
+   */
+  async updateFeedbackById(id: string, update: Partial<FeedbackDocument>): Promise<FeedbackDocument | null> {
+    if (!this.isConnected) {
+      await this.initialize();
+    }
+    return FeedbackModel.findByIdAndUpdate(id, update, { new: true });
+  }
+
+  /**
+   * Delete feedback by ID
+   */
+  async deleteFeedbackById(id: string): Promise<boolean> {
+    if (!this.isConnected) {
+      await this.initialize();
+    }
+    const result = await FeedbackModel.findByIdAndDelete(id);
+    return !!result;
+  }
 } 

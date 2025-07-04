@@ -12,30 +12,36 @@ Add these variables to your `.env` file:
 # MongoDB Configuration
 MONGODB_URI=mongodb://localhost:27017/Naradh
 
+# API Server Configuration
+PORT=3000
+
 # Feedback System Configuration
 COMPANY_NAME=Your Company Name
 SUPPORT_EMAIL=support@yourcompany.com
 FEEDBACK_DASHBOARD_URL=https://dashboard.yourcompany.com/feedback
 FEEDBACK_RESPOND_URL=https://dashboard.yourcompany.com/feedback/respond
-FEEDBACK_API_PORT=3001
 
 # Email Configuration (already setup in main system)
 RESEND_API_KEY=your_resend_api_key
 RESEND_FROM_EMAIL=onboarding@resend.dev
 ```
 
-### 2. Start the Feedback API Server
+### 2. Start the Unified API Server
 
 ```bash
-npm run start:feedback-api
+npm run server
 # or
-npx ts-node server/feedback-api.ts
+npm run api
+# or 
+npx ts-node server/api-server.ts
 ```
+
+The server runs on port 3000 and includes both email and feedback functionality.
 
 ### 3. Submit Feedback via API
 
 ```bash
-curl -X POST http://localhost:3001/api/feedback/submit \
+curl -X POST http://localhost:3000/feedback/submit \
   -H "Content-Type: application/json" \
   -d '{
     "submitter": {
@@ -163,7 +169,9 @@ The system automatically creates indexes for optimal query performance:
 
 ## 🎯 API Endpoints
 
-### POST /api/feedback/submit
+All endpoints are now unified under the main server (port 3000).
+
+### POST /feedback/submit
 Submit new feedback with dual email notifications.
 
 **Request Body**: `FeedbackSubmissionPayload`
@@ -184,7 +192,17 @@ Submit new feedback with dual email notifications.
 }
 ```
 
-### GET /api/feedback/analytics
+### GET /feedback/submit/schema
+Get the complete payload schema for feedback submission with field descriptions, validation rules, and examples.
+
+**Response**: Detailed schema documentation including:
+- All required and optional fields
+- Field types and constraints
+- Allowed enum values
+- Validation rules
+- Complete example payload
+
+### GET /feedback/analytics
 Get aggregated feedback statistics.
 
 **Query Parameters**:
@@ -206,7 +224,7 @@ Get aggregated feedback statistics.
 }
 ```
 
-### GET /api/feedback/recent
+### GET /feedback/recent
 Get recent feedback with optional filters.
 
 **Query Parameters**:
@@ -216,7 +234,7 @@ Get recent feedback with optional filters.
 - `minRating`, `maxRating`: Filter by rating range
 - `limit`: Maximum number of results (default: 50)
 
-### PATCH /api/feedback/:id/status
+### PATCH /feedback/:id/status
 Update feedback status.
 
 **Request Body**:
@@ -227,11 +245,8 @@ Update feedback status.
 }
 ```
 
-### POST /api/feedback/test
+### POST /feedback/test
 Submit test feedback with sample data for development.
-
-### GET /api/feedback/schema
-Get the complete payload schema for validation.
 
 ## 🔧 Usage Examples
 
@@ -443,7 +458,7 @@ For issues with the feedback system:
 
 1. Check the logs for error messages
 2. Verify MongoDB and email service connections
-3. Test with the `/api/feedback/test` endpoint
+3. Test with the `/feedback/test` endpoint
 4. Review environment variable configuration
 
 ---

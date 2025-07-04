@@ -1,6 +1,7 @@
 import { EmailPayload, EmailProvider } from './types/email.types';
 import { EmailServiceFactory } from './factory/EmailServiceFactory';
 import { EmailConfig } from './config/EmailConfig';
+import logger from './config/Logger';
 
 /**
  * Main Email Service that provides a high-level API for sending emails
@@ -45,10 +46,10 @@ export class EmailService {
       // Send email
       await provider.send(payload);
       
-      console.log(`Email sent successfully using ${payload.vendor} provider`);
+      logger.info(`Email sent successfully using ${payload.vendor} provider`);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      console.error(`Failed to send email: ${errorMessage}`);
+      logger.error(`Failed to send email: ${errorMessage}`);
       throw new Error(`Email sending failed: ${errorMessage}`);
     }
   }
@@ -125,7 +126,7 @@ export class EmailService {
       // For other providers, just check if we can create the instance
       return true;
     } catch (error) {
-      console.error(`Configuration test failed for ${vendor}:`, error);
+      logger.error(`Configuration test failed for ${vendor}:`, error);
       return false;
     }
   }

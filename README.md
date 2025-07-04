@@ -1,17 +1,30 @@
-# Extensible Email Service
+# Naradh - Extensible Email & Feedback Service
 
-A TypeScript email service built using the Factory Design Pattern that supports multiple email providers with a pluggable architecture. Send emails using Resend, Nodemailer, or easily integrate new providers.
+A comprehensive TypeScript service built using the Factory Design Pattern that supports multiple email providers and includes a complete feedback management system. Send emails using Resend, Nodemailer, collect feedback, and manage it all through a unified API.
 
 ## Features
 
+### Email Service
 - 🏭 **Factory Pattern**: Pluggable architecture for email providers
 - 🔄 **Multiple Providers**: Built-in support for Resend and Nodemailer
 - 📝 **Template System**: Handlebars-based email templates with filesystem loading
 - ⚡ **Batch Sending**: Send multiple emails with parallel/sequential execution
 - 🔧 **Configurable**: Environment variables and config file support
 - 🚀 **Extensible**: Easy to add new email providers
+
+### Feedback System
+- 💬 **Dual Notifications**: Automatic emails to both submitter and recipient
+- 🗄️ **MongoDB Storage**: Persistent feedback storage with analytics
+- 🎨 **Beautiful Templates**: Professional HTML email templates
+- 📊 **Analytics**: Built-in feedback analytics and reporting
+- 🔍 **Filtering**: Advanced feedback filtering and search
+- 📋 **Tracking**: Unique tracking IDs for all feedback
+
+### API & Development
 - 💪 **TypeScript**: Full type safety and IntelliSense support
-- 🎯 **Future-Proof**: Support for attachments, CC/BCC, and more
+- 🌐 **Unified API**: Single server for both email and feedback functionality
+- 📖 **Documentation**: Auto-generated API schema documentation
+- 🧪 **Testing**: Built-in test endpoints and examples
 
 ## Installation
 
@@ -39,7 +52,18 @@ SMTP_PASSWORD=your-app-password
 SMTP_FROM_EMAIL=your-email@gmail.com
 ```
 
-### 2. Basic Usage
+### 2. Start the Unified API Server
+
+```bash
+# Start the server (includes both email and feedback APIs)
+npm run server
+# or
+npm run api
+
+# Server will run on http://localhost:3000
+```
+
+### 3. Basic Email Usage
 
 ```typescript
 import { EmailService, EmailPayload } from './src';
@@ -60,6 +84,35 @@ const payload: EmailPayload = {
 };
 
 await emailService.sendEmail(payload);
+```
+
+### 4. Feedback System Usage
+
+```bash
+# Submit feedback via API
+curl -X POST http://localhost:3000/feedback/submit \
+  -H "Content-Type: application/json" \
+  -d '{
+    "submitter": {
+      "name": "John Doe",
+      "email": "john@customer.com",
+      "role": "Customer"
+    },
+    "recipient": {
+      "name": "Jane Smith", 
+      "email": "jane@company.com",
+      "role": "Product Manager"
+    },
+    "feedback": {
+      "content": "Great feature! Very intuitive.",
+      "rating": 5,
+      "type": "positive"
+    },
+    "context": {
+      "applicationName": "Web App",
+      "featureName": "User Dashboard"
+    }
+  }'
 ```
 
 ## Architecture
@@ -193,6 +246,34 @@ const results = await emailService.sendBatchEmails(payloads, {
 });
 
 console.log(`Successful: ${results.successful}, Failed: ${results.failed}`);
+```
+
+## API Endpoints
+
+### Email Routes
+- `GET /health` - Health check and API status
+- `GET /providers` - List available email providers  
+- `GET /providers/:vendor/test` - Test provider configuration
+- `POST /email/send` - Send single email
+- `POST /email/batch` - Send batch emails
+- `POST /email/welcome` - Send welcome email (convenience)
+- `POST /email/password-reset` - Send password reset email (convenience)
+
+### Feedback Routes
+- `POST /feedback/submit` - Submit new feedback with dual notifications
+- `GET /feedback/analytics` - Get feedback analytics and statistics
+- `GET /feedback/recent` - Get recent feedback with filtering
+- `PATCH /feedback/:id/status` - Update feedback status  
+- `POST /feedback/test` - Test feedback submission
+- `GET /feedback/schema` - Get API documentation
+
+### Quick Testing
+```bash
+# Test the unified API
+./test-unified-api.sh
+
+# Or check API documentation
+curl http://localhost:3000/feedback/schema
 ```
 
 ### Configuration Testing

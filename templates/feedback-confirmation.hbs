@@ -1,317 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank you for your feedback</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #2d3748;
-            background-color: #f7fafc;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 40px auto;
-            background: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 30px;
-            text-align: center;
-            color: white;
-        }
-        
-        .header h1 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .content {
-            padding: 40px 30px;
-        }
-        
-        .greeting {
-            font-size: 18px;
-            margin-bottom: 24px;
-            color: #2d3748;
-        }
-        
-        .feedback-summary {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 24px;
-            margin: 32px 0;
-        }
-        
-        .feedback-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        
-        .feedback-type {
-            background: #4299e1;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .feedback-type.positive { background: #48bb78; }
-        .feedback-type.negative { background: #f56565; }
-        .feedback-type.suggestion { background: #ed8936; }
-        .feedback-type.bug { background: #e53e3e; }
-        .feedback-type.feature_request { background: #9f7aea; }
-        
-        .rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-        
-        .stars {
-            color: #f6ad55;
-            font-size: 18px;
-        }
-        
-        .feedback-content {
-            background: white;
-            padding: 20px;
-            border-radius: 6px;
-            border-left: 4px solid #4299e1;
-            font-style: italic;
-            color: #4a5568;
-            line-height: 1.7;
-        }
-        
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 32px 0;
-        }
-        
-        .detail-item {
-            text-align: center;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 8px;
-        }
-        
-        .detail-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #718096;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .detail-value {
-            font-size: 16px;
-            color: #2d3748;
-            font-weight: 500;
-        }
-        
-        .tracking-section {
-            background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
-            border-radius: 8px;
-            padding: 24px;
-            text-align: center;
-            margin: 32px 0;
-        }
-        
-        .tracking-id {
-            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-            font-size: 18px;
-            font-weight: 700;
-            color: #c05621;
-            background: white;
-            padding: 12px 20px;
-            border-radius: 6px;
-            display: inline-block;
-            margin: 12px 0;
-            letter-spacing: 1px;
-        }
-        
-        .message-box {
-            background: #e6fffa;
-            border-left: 4px solid #38b2ac;
-            padding: 20px;
-            border-radius: 0 6px 6px 0;
-            margin: 24px 0;
-        }
-        
-        .message-box h4 {
-            color: #234e52;
-            margin-bottom: 12px;
-            font-size: 16px;
-        }
-        
-        .message-box p {
-            color: #285e61;
-            margin: 0;
-        }
-        
-        .footer {
-            background: #f8fafc;
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid #e2e8f0;
-        }
-        
-        .footer p {
-            color: #718096;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-        
-        .footer a {
-            color: #4299e1;
-            text-decoration: none;
-        }
-        
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        
-        .signature {
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid #e2e8f0;
-            color: #4a5568;
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px;
-                border-radius: 8px;
-            }
-            
-            .header, .content {
-                padding: 30px 20px;
-            }
-            
-            .details-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            
-            .feedback-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You for Your Feedback</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f1f5f9;
+      color: #1f2937;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .header {
+      background-color: #059669;
+      color: white;
+      text-align: center;
+      padding: 28px 24px;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .content {
+      padding: 32px 28px;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .feedback-type {
+      display: inline-block;
+      background-color: #ecfdf5;
+      color: #047857;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .feedback-content {
+      background-color: #f9fafb;
+      border-left: 4px solid #059669;
+      padding: 16px 20px;
+      border-radius: 6px;
+      font-style: italic;
+      margin: 20px 0;
+      color: #374151;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 18px;
+      background-color: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 28px 0;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #4b5563;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: #1f2937;
+    }
+
+    .tracking-id {
+      text-align: center;
+      background-color: #ecfdf5;
+      padding: 16px;
+      border-radius: 6px;
+      margin: 24px 0;
+    }
+
+    .tracking-id strong {
+      display: block;
+      color: #047857;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .tracking-code {
+      font-family: monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .tracking-id p {
+      margin: 8px 0 0;
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    a {
+      color: #059669;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #9ca3af;
+      border-top: 1px solid #e5e7eb;
+      padding: 20px;
+      background-color: #f9fafb;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 12px;
+      }
+
+      .content {
+        padding: 24px 20px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Thank You! 🙏</h1>
-            <p>Your feedback has been received and is greatly appreciated</p>
-        </div>
-        
-        <div class="content">
-            <div class="greeting">
-                Hello {{submitterName}},
-            </div>
-            
-            <p>Thank you for sharing your thoughts about <strong>{{featureName}}</strong> in {{applicationName}}. Your feedback helps us create better experiences for everyone.</p>
-            
-            <div class="feedback-summary">
-                <div class="feedback-header">
-                    <span class="feedback-type {{feedbackType}}">{{uppercase feedbackType}}</span>
-                    <div class="rating">
-                        <span class="stars">{{ratingStars}}</span>
-                        <span>{{rating}}/5</span>
-                    </div>
-                </div>
-                
-                <div class="feedback-content">
-                    "{{feedbackContent}}"
-                </div>
-            </div>
-            
-            <div class="details-grid">
-                <div class="detail-item">
-                    <div class="detail-label">Application</div>
-                    <div class="detail-value">{{applicationName}}</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Feature</div>
-                    <div class="detail-value">{{featureName}}</div>
-                </div>
-                {{#if environment}}
-                <div class="detail-item">
-                    <div class="detail-label">Environment</div>
-                    <div class="detail-value">{{uppercase environment}}</div>
-                </div>
-                {{/if}}
-                <div class="detail-item">
-                    <div class="detail-label">Submitted</div>
-                    <div class="detail-value">{{formatDate submissionDate}}</div>
-                </div>
-            </div>
-            
-            {{#if trackingId}}
-            <div class="tracking-section">
-                <h3 style="margin: 0 0 8px 0; color: #c05621;">📋 Your Reference ID</h3>
-                <div class="tracking-id">{{trackingId}}</div>
-                <p style="margin: 0; color: #744210; font-size: 14px;">Save this for future reference</p>
-            </div>
-            {{/if}}
-            
-            {{#if confirmationMessage}}
-            <div class="message-box">
-                <h4>💬 Message from our team</h4>
-                <p>{{confirmationMessage}}</p>
-            </div>
-            {{/if}}
-            
-            <p>Our team will review your feedback and take appropriate action. {{#ifEquals feedbackType 'bug'}}We'll investigate the issue and work on a fix.{{else}}We'll consider your input for future improvements.{{/ifEquals}}</p>
-            
-            {{#if supportEmail}}
-            <p>If you have any questions, feel free to reach out to us at <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>.</p>
-            {{/if}}
-            
-            <div class="signature">
-                <p>Best regards,<br><strong>The {{companyName}} Team</strong></p>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>&copy; {{formatDate submissionDate}} {{companyName}}. All rights reserved.</p>
-            {{#if supportEmail}}
-            <p>Questions? Contact us at <a href="mailto:{{supportEmail}}">{{supportEmail}}</a></p>
-            {{/if}}
-        </div>
+  <div class="container">
+    <div class="header">
+      <h1>Thank You for Your Feedback</h1>
     </div>
+
+    <div class="content">
+      <div class="section">
+        <p>Hello {{submitterName}},</p>
+        <p>Thank you for taking the time to share your thoughts on <strong>{{featureName}}</strong> in <strong>{{applicationName}}</strong>. Your feedback helps us improve and grow.</p>
+      </div>
+
+      <div class="section">
+        <div class="feedback-type">{{feedbackType}}</div>
+        {{#if rating}}
+        <p><strong>Your Rating:</strong> {{rating}} / 5</p>
+        {{/if}}
+
+        <div class="feedback-content">
+          "{{feedbackContent}}"
+        </div>
+      </div>
+
+      <div class="meta-grid">
+        <div>
+          <div class="meta-label">Application</div>
+          <div class="meta-value">{{applicationName}}</div>
+        </div>
+        <div>
+          <div class="meta-label">Feature</div>
+          <div class="meta-value">{{featureName}}</div>
+        </div>
+        {{#if environment}}
+        <div>
+          <div class="meta-label">Environment</div>
+          <div class="meta-value">{{environment}}</div>
+        </div>
+        {{/if}}
+        <div>
+          <div class="meta-label">Submitted</div>
+          <div class="meta-value">{{submissionDate}}</div>
+        </div>
+      </div>
+
+      {{#if trackingId}}
+      <div class="tracking-id">
+        <strong>Your Reference ID</strong>
+        <div class="tracking-code">{{trackingId}}</div>
+        <p>Save this for future reference</p>
+      </div>
+      {{/if}}
+
+      <div class="section">
+        {{#if confirmationMessage}}
+        <p><strong>Message from our team:</strong> {{confirmationMessage}}</p>
+        {{/if}}
+
+        <p>We’ll review your feedback soon and consider it carefully. Your contribution is valuable to us.</p>
+
+        {{#if supportEmail}}
+        <p>If you have questions or additional comments, you can reach us at <a href="mailto:{{supportEmail}}">{{supportEmail}}</a>.</p>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; {{companyName}} • Feedback System</p>
+      {{#if supportEmail}}
+      <p>Need help? <a href="mailto:{{supportEmail}}">{{supportEmail}}</a></p>
+      {{/if}}
+    </div>
+  </div>
 </body>
-</html> 
+</html>

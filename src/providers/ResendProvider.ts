@@ -1,6 +1,7 @@
 import { Resend } from 'resend';
 import { EmailProvider, EmailPayload, EmailProviderConfig } from '../types/email.types';
 import { TemplateService } from '../services/TemplateService';
+import logger from '../config/Logger';
 
 /**
  * Resend email provider implementation
@@ -36,7 +37,7 @@ export class ResendProvider implements EmailProvider {
       }
 
       // Log the payload for debugging (remove in production)
-      console.log('Sending email with Resend, payload:', {
+      logger.info('Sending email with Resend, payload:', {
         to: payload.to,
         subject: payload.subject,
         from: this.fromEmail,
@@ -62,7 +63,7 @@ export class ResendProvider implements EmailProvider {
         ...(payload.tags && { tags: payload.tags }),
       };
 
-      console.log('Sending to Resend API with data:', {
+      logger.info('Sending to Resend API with data:', {
         from: emailData.from,
         to: emailData.to,
         subject: emailData.subject,
@@ -72,10 +73,10 @@ export class ResendProvider implements EmailProvider {
       // Send the email
       const response = await this.resend.emails.send(emailData);
 
-      console.log('Resend API Response:', response);
+      logger.info('Resend API Response:', response);
 
       if (response.error) {
-        console.error('Resend API Error Details:', response.error);
+        logger.error('Resend API Error Details:', response.error);
         throw new Error(`Resend API error: ${response.error.message || JSON.stringify(response.error)}`);
       }
 
@@ -83,9 +84,9 @@ export class ResendProvider implements EmailProvider {
         throw new Error('Resend API returned no data in response');
       }
 
-      console.log(`Email sent successfully via Resend. ID: ${response.data.id}`);
+      logger.info(`Email sent successfully via Resend. ID: ${response.data.id}`);
     } catch (error) {
-      console.error('Error in ResendProvider.send:', error);
+      logger.error('Error in ResendProvider.send:', error);
       
       // If it's already a Resend API error, re-throw as is
       if (error instanceof Error && error.message.includes('Resend API error')) {

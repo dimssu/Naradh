@@ -1,6 +1,7 @@
 import * as nodemailer from 'nodemailer';
 import { EmailProvider, EmailPayload, EmailProviderConfig } from '../types/email.types';
 import { TemplateService } from '../services/TemplateService';
+import logger from '../config/Logger';
 
 /**
  * Nodemailer email provider implementation
@@ -93,11 +94,11 @@ export class NodemailerProvider implements EmailProvider {
       // Send the email
       const info = await this.transporter.sendMail(mailOptions);
 
-      console.log(`Email sent successfully via Nodemailer. Message ID: ${info.messageId}`);
+      logger.info(`Email sent successfully via Nodemailer. Message ID: ${info.messageId}`);
       
       // Log additional info if available
       if (info.preview) {
-        console.log(`Preview URL: ${nodemailer.getTestMessageUrl(info)}`);
+        logger.info(`Preview URL: ${nodemailer.getTestMessageUrl(info)}`);
       }
     } catch (error) {
       throw new Error(
@@ -117,7 +118,7 @@ export class NodemailerProvider implements EmailProvider {
       await this.transporter.verify();
       return true;
     } catch (error) {
-      console.error('Nodemailer configuration verification failed:', error);
+      logger.error('Nodemailer configuration verification failed:', error);
       return false;
     }
   }

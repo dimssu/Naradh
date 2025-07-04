@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 import * as fs from 'fs';
 import * as path from 'path';
 import { EmailProviderConfig } from '../types/email.types';
+import logger from './Logger';
 
 // Load environment variables
 dotenv.config();
@@ -101,11 +102,11 @@ export class EmailConfig {
             }
           });
           
-          console.log(`Loaded email configuration from: ${configPath}`);
+          logger.info(`Loaded email configuration from: ${configPath}`);
           break;
         }
       } catch (error) {
-        console.warn(`Failed to load config from ${configPath}:`, error);
+        logger.warn(`Failed to load config from ${configPath}:`, error);
       }
     }
   }
@@ -194,6 +195,6 @@ export class EmailConfig {
     };
 
     fs.writeFileSync(filePath, JSON.stringify(sampleConfig, null, 2));
-    console.log(`Sample configuration created at: ${filePath}`);
+    logger.info(`Sample configuration created at: ${filePath}`);
   }
 } 
