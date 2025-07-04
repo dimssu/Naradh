@@ -2,13 +2,13 @@
   "name": "extensible-email-service",
   "version": "1.0.0",
   "description": "An extensible email sending service using Factory Design Pattern",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/index.ts",
-    "start": "node dist/index.js",
-    "server": "ts-node server/api-server.ts",
-    "api": "ts-node server/api-server.ts",
+    "start": "node dist/src/index.js",
+    "clean": "rm -rf dist",
+    "build:clean": "npm run clean && npm run build",
     "feedback:example": "ts-node examples/feedback-usage.ts",
     "test": "jest",
     "test-resend": "ts-node server/test-resend.ts"

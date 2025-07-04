@@ -1,5 +1,5 @@
 import express from 'express';
-import { EmailService } from '../src';
+import { EmailService } from '../src/EmailService';
 import { FeedbackService } from '../src/services/FeedbackService';
 import { FeedbackSubmissionPayload, FeedbackSubmissionResponse } from '../src/types/feedback.types';
 import logger from '../src/config/Logger';

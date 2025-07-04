@@ -1,6 +1,7 @@
 import express from 'express';
 import * as path from 'path';
-import { EmailService, EmailPayload } from '../src';
+import { EmailService } from '../src/EmailService';
+import { EmailPayload } from '../src/types/email.types';
 import { successResponse, errorResponse, ERRORS, STATUS } from './constants';
 
 const emailRoutes = express.Router();
