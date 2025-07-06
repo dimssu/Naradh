@@ -4,263 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New Feedback Received</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      background-color: #f1f5f9;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #1f2937;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      overflow: hidden;
-      border: 1px solid #e5e7eb;
-    }
-
-    .header {
-      background-color: #2563eb;
-      color: white;
-      text-align: center;
-      padding: 28px 24px;
-    }
-
-    .header h1 {
-      font-size: 22px;
-      margin: 0;
-      font-weight: 600;
-    }
-
-    .content {
-      padding: 32px 28px;
-    }
-
-    .section {
-      margin-bottom: 28px;
-    }
-
-    .feedback-type {
-      display: inline-block;
-      background-color: #e0f2fe;
-      color: #0369a1;
-      padding: 4px 10px;
-      font-size: 11px;
-      font-weight: 600;
-      border-radius: 4px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .feedback-content {
-      background-color: #f9fafb;
-      border-left: 4px solid #2563eb;
-      padding: 16px 20px;
-      border-radius: 6px;
-      font-style: italic;
-      margin: 20px 0;
-      color: #374151;
-    }
-
-    .submitter {
-      background-color: #f8fafc;
-      border-radius: 6px;
-      padding: 16px;
-    }
-
-    .submitter h4 {
-      margin: 0;
-      font-size: 15px;
-      color: #111827;
-    }
-
-    .submitter p {
-      margin: 6px 0 0;
-      font-size: 13px;
-      color: #6b7280;
-    }
-
-    .meta-grid {
-      display: flex;
-      flex-direction: column;
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      margin: 28px 0;
-      box-shadow: 0 2px 8px rgba(31, 41, 55, 0.04);
-      overflow: hidden;
-    }
-
-    .meta-grid-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 18px 24px;
-      border-bottom: 1px solid #e5e7eb;
-      background: #fff;
-    }
-
-    .meta-grid-item:last-child {
-      border-bottom: none;
-    }
-
-    .meta-label {
-      flex: 0 0 140px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-right: 18px;
-    }
-
-    .meta-value {
-      flex: 1;
-      font-size: 18px;
-      font-weight: 700;
-      color: #1f2937;
-      background: #f3f6fa;
-      border-radius: 6px;
-      padding: 6px 14px;
-      word-break: break-word;
-      box-shadow: 0 1px 2px rgba(31,41,55,0.03);
-    }
-
-    .tracking-id {
-      text-align: center;
-      background-color: #eff6ff;
-      padding: 16px;
-      border-radius: 6px;
-      margin: 24px 0;
-    }
-
-    .tracking-id strong {
-      display: block;
-      color: #1e3a8a;
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .tracking-code {
-      font-family: monospace;
-      font-size: 16px;
-      font-weight: 700;
-      color: #1d4ed8;
-    }
-
-    a {
-      color: #2563eb;
-      text-decoration: none;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 13px;
-      color: #9ca3af;
-      border-top: 1px solid #e5e7eb;
-      padding: 20px;
-      background-color: #f9fafb;
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 12px;
-      }
-
-      .content {
-        padding: 24px 20px;
-      }
-
-      .meta-grid {
-        grid-template-columns: 1fr;
-      }
-      .meta-grid-item {
-        border-right: none;
-        border-bottom: 1px solid #e5e7eb;
-      }
-      .meta-grid-item:last-child {
-        border-bottom: none;
-      }
-    }
-  </style>
 </head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>New Feedback Received</h1>
+<body style="margin: 0; padding: 20px; background-color: #f1f5f9; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1f2937;">
+  <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); overflow: hidden; border: 1px solid #e5e7eb;">
+    <div style="background-color: #2563eb; color: white; text-align: center; padding: 28px 24px;">
+      <h1 style="font-size: 22px; margin: 0; font-weight: 600;">New Feedback Received</h1>
     </div>
 
-    <div class="content">
-      <div class="section">
+    <div style="padding: 32px 28px;">
+      <div style="margin-bottom: 28px;">
         <p>Hello {{recipientName}},</p>
         <p>You've received new feedback on <strong>{{featureName}}</strong> in <strong>{{applicationName}}</strong>.</p>
       </div>
 
-      <div class="section">
-        <div class="feedback-type">{{feedbackType}}</div>
+      <div style="margin-bottom: 28px;">
+        <div style="display: inline-block; background-color: #e0f2fe; color: #0369a1; padding: 4px 10px; font-size: 11px; font-weight: 600; border-radius: 4px; text-transform: uppercase; margin-bottom: 16px;">{{feedbackType}}</div>
         {{#if rating}}
-        <p><strong>Rating:</strong> {{rating}} / 5</p>
+        <p><strong>Rating:</strong> <span style="color: #2563eb; font-size: 15px; font-weight: bold;">{{rating}} / 5</span></p>
         {{/if}}
 
-        <div class="feedback-content">
-          {{feedbackContent}}
-        </div>
+        <div style="background-color: #f9fafb; border-left: 4px solid #2563eb; padding: 16px 20px; border-radius: 6px; font-style: italic; margin: 20px 0; color: #374151;">{{feedbackContent}}</div>
 
-        <div class="submitter">
-          <h4>{{submitterName}}</h4>
-          <p>{{submitterEmail}}{{#if submitterRole}} • {{submitterRole}}{{/if}}</p>
+        <div style="background-color: #f8fafc; border-radius: 6px; padding: 16px;">
+          <h4 style="margin: 0; font-size: 15px; color: #111827;">{{submitterName}}</h4>
+          <p style="margin: 6px 0 0; font-size: 13px; color: #6b7280;">{{submitterEmail}}{{#if submitterRole}} • {{submitterRole}}{{/if}}</p>
         </div>
       </div>
 
-      <div class="meta-grid">
-        <div class="meta-grid-item">
-          <div class="meta-label">Application</div>
-          <div class="meta-value">{{applicationName}}</div>
+      <div style="display: flex; flex-direction: column; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; margin: 28px 0; box-shadow: 0 2px 8px rgba(31,41,55,0.04); overflow: hidden;">
+        <div style="display: flex; flex-direction: row; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: #fff;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Application</div>
+          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{applicationName}}</div>
         </div>
-        <div class="meta-grid-item">
-          <div class="meta-label">Feature</div>
-          <div class="meta-value">{{featureName}}</div>
+        <div style="display: flex; flex-direction: row; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: #fff;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Feature</div>
+          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{featureName}}</div>
         </div>
         {{#if environment}}
-        <div class="meta-grid-item">
-          <div class="meta-label">Environment</div>
-          <div class="meta-value">{{environment}}</div>
+        <div style="display: flex; flex-direction: row; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: #fff;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Environment</div>
+          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{environment}}</div>
         </div>
         {{/if}}
         {{#if version}}
-        <div class="meta-grid-item">
-          <div class="meta-label">Version</div>
-          <div class="meta-value">{{version}}</div>
+        <div style="display: flex; flex-direction: row; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: #fff;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Version</div>
+          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{version}}</div>
         </div>
         {{/if}}
-        <div class="meta-grid-item">
-          <div class="meta-label">Submitted</div>
-          <div class="meta-value">{{submissionDate}}</div>
+        <div style="display: flex; flex-direction: row; padding: 18px 24px; background: #fff;">
+          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Submitted</div>
+          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{submissionDate}}</div>
         </div>
       </div>
 
       {{#if trackingId}}
-      <div class="tracking-id">
-        <strong>Reference ID</strong>
-        <div class="tracking-code">{{trackingId}}</div>
+      <div style="text-align: center; background-color: #eff6ff; padding: 16px; border-radius: 6px; margin: 24px 0;">
+        <strong style="display: block; color: #1e3a8a; font-size: 14px; margin-bottom: 6px;">Reference ID</strong>
+        <div style="font-family: monospace; font-size: 16px; font-weight: 700; color: #1d4ed8;">{{trackingId}}</div>
       </div>
       {{/if}}
 
-      <div class="section">
+      <div style="margin-bottom: 28px;">
         <p>We recommend reviewing this feedback and taking appropriate action. The user has been informed that their feedback was received.</p>
         {{#if submitterEmail}}
-        <p>You can reach out directly at: <a href="mailto:{{submitterEmail}}">{{submitterEmail}}</a></p>
+        <p>You can reach out directly at: <a href="mailto:{{submitterEmail}}" style="color: #2563eb; text-decoration: none;">{{submitterEmail}}</a></p>
         {{/if}}
       </div>
     </div>
 
-    <div class="footer">
-      <p>&copy; {{companyName}} • Feedback System</p>
-      {{#if submissionDate}}<p>{{submissionDate}}</p>{{/if}}
+    <div style="text-align: center; font-size: 13px; color: #9ca3af; border-top: 1px solid #e5e7eb; padding: 20px; background-color: #f9fafb;">
+      <p style="margin: 0;">&copy; {{companyName}} • Feedback System</p>
+      {{#if submissionDate}}<p style="margin: 0;">{{submissionDate}}</p>{{/if}}
     </div>
   </div>
 </body>
