@@ -5,75 +5,137 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thank You for Your Feedback</title>
 </head>
-<body style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; color: #1f2937; margin: 0; padding: 20px;">
-  <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); overflow: hidden; border: 1px solid #e5e7eb;">
-    <div style="background-color: #059669; color: white; text-align: center; padding: 28px 24px;">
-      <h1 style="font-size: 22px; margin: 0; font-weight: 600;">Thank You for Your Feedback</h1>
-    </div>
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1f2937;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f1f5f9">
+    <tr>
+      <td align="center" style="padding: 20px;">
+        <table width="600" cellpadding="0" cellspacing="0" border="0" style="background: #ffffff; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); overflow: hidden;">
+          
+          <!-- Header -->
+          <tr>
+            <td bgcolor="#059669" style="padding: 28px 24px; text-align: center; color: #ffffff;">
+              <h1 style="margin: 0; font-size: 22px; font-weight: 600;">Thank You for Your Feedback</h1>
+            </td>
+          </tr>
 
-    <div style="padding: 32px 28px;">
-      <div style="margin-bottom: 28px;">
-        <p>Hello {{submitterName}},</p>
-        <p>Thank you for taking the time to share your thoughts on <strong>{{featureName}}</strong> in <strong>{{applicationName}}</strong>. Your feedback helps us improve and grow.</p>
-      </div>
+          <!-- Content -->
+          <tr>
+            <td style="padding: 32px 28px;">
+              
+              <!-- Greeting -->
+              <p style="margin: 0 0 16px;">Hello {{submitterName}},</p>
+              <p style="margin: 0 0 28px;">Thank you for taking the time to share your thoughts on <strong>{{featureName}}</strong> in <strong>{{applicationName}}</strong>. Your feedback helps us improve and grow.</p>
 
-      <div style="margin-bottom: 28px;">
-        <div style="display: inline-block; background-color: #ecfdf5; color: #047857; padding: 4px 10px; font-size: 11px; font-weight: 600; border-radius: 4px; text-transform: uppercase; margin-bottom: 16px;">{{feedbackType}}</div>
-        {{#if rating}}
-        <p style="font-size: 18px;"><strong>Your Rating:</strong> <span style="color: #059669; font-size: 20px; font-weight: bold;">{{rating}} / 5</span></p>
-        {{/if}}
+              <!-- Feedback Type & Rating -->
+              <div style="margin-bottom: 20px;">
+                <span style="display: inline-block; background-color: #ecfdf5; color: #047857; padding: 4px 10px; font-size: 11px; font-weight: 600; border-radius: 4px; text-transform: uppercase;">{{feedbackType}}</span>
+                {{#if rating}}
+                <p style="font-size: 16px; margin-top: 12px;"><strong>Your Rating:</strong> <span style="color: #059669; font-size: 18px;">{{rating}} / 5</span></p>
+                {{/if}}
+              </div>
 
-        <div style="background-color: #f9fafb; border-left: 4px solid #059669; padding: 16px 20px; border-radius: 6px; font-style: italic; margin: 20px 0; color: #374151;">"{{feedbackContent}}"</div>
-      </div>
+              <!-- Feedback Content -->
+              <blockquote style="background-color: #f9fafb; border-left: 4px solid #059669; padding: 16px 20px; border-radius: 6px; font-style: italic; color: #374151; margin: 20px 0;">
+                "{{feedbackContent}}"
+              </blockquote>
 
-      <div style="display: flex; flex-direction: column; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; margin: 28px 0; box-shadow: 0 2px 8px rgba(31,41,55,0.04); overflow: hidden;">
-        <div style="display: flex; flex-direction: row; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: #fff;">
-          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Application</div>
-          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{applicationName}}</div>
-        </div>
-        <div style="display: flex; flex-direction: row; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: #fff;">
-          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Feature</div>
-          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{featureName}}</div>
-        </div>
-        {{#if environment}}
-        <div style="display: flex; flex-direction: row; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: #fff;">
-          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Environment</div>
-          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{environment}}</div>
-        </div>
-        {{/if}}
-        <div style="display: flex; flex-direction: row; padding: 18px 24px; background: #fff;">
-          <div style="display: flex; align-items: center; justify-content: center; width: 140px; font-size: 13px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 18px;">Submitted</div>
-          <div style="flex: 1; font-size: 16px; font-weight: 600; color: #1f2937; background: #f3f6fa; border-radius: 6px; padding: 6px 14px; word-break: break-word; box-shadow: 0 1px 2px rgba(31,41,55,0.03);">{{submissionDate}}</div>
-        </div>
-      </div>
+              <!-- Metadata Table -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border: 1px solid #e5e7eb; border-radius: 12px; background-color: #f9fafb; margin: 28px 0; box-shadow: 0 2px 8px rgba(31, 41, 55, 0.04);">
+                <!-- Application -->
+                <tr>
+                  <td style="padding: 14px 20px; font-weight: 700; font-size: 12px; color: #6b7280; text-transform: uppercase;">
+                    Application
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 20px 14px 20px;">
+                    <div style="font-size: 16px; font-weight: 600; background-color: #f3f6fa; padding: 10px 14px; border-radius: 6px;">
+                      {{applicationName}}
+                    </div>
+                  </td>
+                </tr>
+              
+                <!-- Feature -->
+                <tr>
+                  <td style="padding: 14px 20px 0 20px; font-weight: 700; font-size: 12px; color: #6b7280; text-transform: uppercase;">
+                    Feature
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 20px 14px 20px;">
+                    <div style="font-size: 16px; font-weight: 600; background-color: #f3f6fa; padding: 10px 14px; border-radius: 6px;">
+                      {{featureName}}
+                    </div>
+                  </td>
+                </tr>
+              
+                <!-- Environment (conditional) -->
+                {{#if environment}}
+                <tr>
+                  <td style="padding: 14px 20px 0 20px; font-weight: 700; font-size: 12px; color: #6b7280; text-transform: uppercase;">
+                    Environment
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 20px 14px 20px;">
+                    <div style="font-size: 16px; font-weight: 600; background-color: #f3f6fa; padding: 10px 14px; border-radius: 6px;">
+                      {{environment}}
+                    </div>
+                  </td>
+                </tr>
+                {{/if}}
+              
+                <!-- Submitted -->
+                <tr>
+                  <td style="padding: 14px 20px 0 20px; font-weight: 700; font-size: 12px; color: #6b7280; text-transform: uppercase;">
+                    Submitted
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 0 20px 20px 20px;">
+                    <div style="font-size: 16px; font-weight: 600; background-color: #f3f6fa; padding: 10px 14px; border-radius: 6px;">
+                      {{submissionDate}}
+                    </div>
+                  </td>
+                </tr>
+              </table>              
 
-      {{#if trackingId}}
-      <div style="text-align: center; background-color: #ecfdf5; padding: 16px; border-radius: 6px; margin: 24px 0;">
-        <strong style="display: block; color: #047857; font-size: 14px; margin-bottom: 6px;">Your Reference ID</strong>
-        <div style="font-family: monospace; font-size: 16px; font-weight: 700; color: #065f46;">{{trackingId}}</div>
-        <p style="margin: 8px 0 0; font-size: 12px; color: #6b7280;">Save this for future reference</p>
-      </div>
-      {{/if}}
+              <!-- Tracking ID -->
+              {{#if trackingId}}
+              <div style="background-color: #ecfdf5; padding: 16px; border-radius: 6px; text-align: center; margin-bottom: 28px;">
+                <strong style="display: block; color: #047857; font-size: 14px; margin-bottom: 6px;">Your Reference ID</strong>
+                <div style="font-family: monospace; font-size: 16px; font-weight: 700; color: #065f46;">{{trackingId}}</div>
+                <p style="margin: 8px 0 0; font-size: 12px; color: #6b7280;">Save this for future reference</p>
+              </div>
+              {{/if}}
 
-      <div style="margin-bottom: 28px;">
-        {{#if confirmationMessage}}
-        <p><strong>Message from our team:</strong> {{confirmationMessage}}</p>
-        {{/if}}
+              <!-- Additional Message -->
+              {{#if confirmationMessage}}
+              <p style="margin-bottom: 10px;"><strong>Message from our team:</strong> {{confirmationMessage}}</p>
+              {{/if}}
 
-        <p>We'll review your feedback soon and consider it carefully. Your contribution is valuable to us.</p>
+              <p style="margin-bottom: 16px;">We'll review your feedback soon and consider it carefully. Your contribution is valuable to us.</p>
 
-        {{#if supportEmail}}
-        <p>If you have questions or additional comments, you can reach us at <a href="mailto:{{supportEmail}}" style="color: #059669; text-decoration: none;">{{supportEmail}}</a>.</p>
-        {{/if}}
-      </div>
-    </div>
+              {{#if supportEmail}}
+              <p style="margin-bottom: 0;">If you have questions or additional comments, reach us at <a href="mailto:{{supportEmail}}" style="color: #059669; text-decoration: none;">{{supportEmail}}</a>.</p>
+              {{/if}}
 
-    <div style="text-align: center; font-size: 13px; color: #9ca3af; border-top: 1px solid #e5e7eb; padding: 20px; background-color: #f9fafb;">
-      <p style="margin: 0;">&copy; {{companyName}} • Feedback System</p>
-      {{#if supportEmail}}
-      <p style="margin: 0;">Need help? <a href="mailto:{{supportEmail}}" style="color: #059669; text-decoration: none;">{{supportEmail}}</a></p>
-      {{/if}}
-    </div>
-  </div>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="text-align: center; font-size: 13px; color: #9ca3af; border-top: 1px solid #e5e7eb; padding: 20px; background-color: #f9fafb;">
+              <p style="margin: 0;">&copy; {{companyName}} • Feedback System</p>
+              {{#if supportEmail}}
+              <p style="margin: 0;">Need help? <a href="mailto:{{supportEmail}}" style="color: #059669; text-decoration: none;">{{supportEmail}}</a></p>
+              {{/if}}
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
