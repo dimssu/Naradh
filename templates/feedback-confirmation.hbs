@@ -69,6 +69,7 @@
     .meta-grid {
       display: flex;
       flex-direction: column;
+      gap: 0;
       background: #f9fafb;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
@@ -80,10 +81,9 @@
     .meta-grid-item {
       display: flex;
       flex-direction: row;
-      align-items: center;
       padding: 18px 24px;
-      border-bottom: 1px solid #e5e7eb;
       background: #fff;
+      border-bottom: 1px solid #e5e7eb;
     }
 
     .meta-grid-item:last-child {
@@ -91,7 +91,10 @@
     }
 
     .meta-label {
-      flex: 0 0 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
       font-size: 13px;
       font-weight: 700;
       color: #6b7280;
@@ -102,8 +105,8 @@
 
     .meta-value {
       flex: 1;
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 16px;
+      font-weight: 600;
       color: #1f2937;
       background: #f3f6fa;
       border-radius: 6px;
@@ -167,15 +170,8 @@
         padding: 24px 20px;
       }
 
-      .meta-grid {
-        grid-template-columns: 1fr;
-      }
-      .meta-grid-item {
-        border-right: none;
-        border-bottom: 1px solid #e5e7eb;
-      }
-      .meta-grid-item:last-child {
-        border-bottom: none;
+      .meta-label {
+        width: 100px;
       }
     }
   </style>
@@ -205,7 +201,7 @@
 
       <div class="meta-grid">
         <div class="meta-grid-item">
-          <div class="meta-label">Application</div>
+          <div class="meta-label"><span>Application</span></div>
           <div class="meta-value">{{applicationName}}</div>
         </div>
         <div class="meta-grid-item">
